@@ -8,3 +8,6 @@ set number
 "trailing white space detection
 highlight WhitespaceEOL ctermbg=yellow guibg=lightgray
 match WhitespaceEOL /\s\+$/
+
+"cool dark colorscheme
+colorscheme slate
