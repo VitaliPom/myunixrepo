@@ -1,10 +1,10 @@
-"GVIM AND VIM
+"GVIM ONLY
 set relativenumber
+set number
 
 "search in history - 
 "q:
 
-"GVIM ONLY
 "trailing white space detection
 highlight WhitespaceEOL ctermbg=yellow guibg=lightgray
 match WhitespaceEOL /\s\+$/
