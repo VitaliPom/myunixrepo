@@ -6,7 +6,7 @@ set number
 "q:
 
 "trailing white space detection
-highlight WhitespaceEOL ctermbg=yellow guibg=lightgray
+highlight WhitespaceEOL guibg=#000000
 match WhitespaceEOL /\s\+$/
 
 "cool dark colorscheme
