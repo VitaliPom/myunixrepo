@@ -1,0 +1,25 @@
+#UNIX
+alias open='open -a "Sublime Text"'
+alias ll='ls -ltra'
+alias l='less'
+alias openaliases='open ~/.aliases'
+alias sourcealiases='source ~/.aliases'
+
+#Android
+alias start-android-server="$ANDROID_SDK/sdk/platform-tools/adb start-server"
+alias stop-android-server="$ANDROID_SDK/sdk/platform-tools/adb kill-server"
+alias log-android-server="$ANDROID_SDK/sdk/platform-tools/adb logcat"
+alias fbx-conv-mac="/Users/vitalipom/NetBeansProjects/fbx-conv/fbx-conv-mac"
+alias mysql="/usr/local/mysql/bin/mysql"
+
+#Google EffectedKeyboard
+alias git-commit="git add -A && git commit -m"
+alias git-push="git push --all google"
+alias handsonthefloor="git clean -n"
+alias shootthemdead="git reset --hard && git clean -dfx"
+alias git_undo_try="git reset"
+alias git_undo_hard='shootthemdead'
+alias git_goolge_isthere='git remote -v| grep google'
+alias git_goolge_add='git remote add google https://source.developers.google.com/p/effectedkeyboardsociaigit/r/EffectedKeyboardSocialGit'
+alias git_branches="git remote show google"
+
