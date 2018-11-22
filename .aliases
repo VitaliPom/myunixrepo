@@ -23,3 +23,4 @@ alias git_goolge_isthere='git remote -v| grep google'
 alias git_goolge_add='git remote add google https://source.developers.google.com/p/effectedkeyboardsociaigit/r/EffectedKeyboardSocialGit'
 alias git_branches="git remote show google"
 
+alias ssh_google="ssh -i .gc_rsa vitali_pom@35.224.59.124" 
