@@ -19,7 +19,14 @@ export TARGET_OS="darwin"
 export SYS_VERSION="10.10"
 export ANDROID_GRADLE=$GRADLE_HOME
 
+
+export IP_GENIESTILLS="35.198.99.254"
+export USER_GENIESTILLS="vitali_pom"
+export SERVER_GENIESTILLS="vitali_pom@35.198.99.254"
+export SSH_GENIESTILLS="~/.ssh/.gc_rsa"
+
 defaults write com.apple.LaunchServices LSHandlers -array-add '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=com.apple.dt.Xcode;}'
+
 
 
 #######
@@ -86,3 +93,5 @@ if [ -f '/Users/vitalipom/google-cloud-sdk/path.bash.inc' ]; then source '/Users
 if [ -f '/Users/vitalipom/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/vitalipom/google-cloud-sdk/completion.bash.inc'; fi
 
 
+bind -f ~/.inputrc
+source ~/.aliases
