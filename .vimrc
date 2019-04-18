@@ -18,7 +18,7 @@ set smartindent
 set autoindent
 set cindent
 "hilight last inserted text
-nnoremap gV `[v`]
+nnoremap gV `[v`]$
 set scrolloff=99
 set wildmenu
 set showmatch           " match brackets
