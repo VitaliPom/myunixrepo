@@ -1,3 +1,4 @@
+set noeb vb t_vb=
 set timeoutlen=1000 ttimeoutlen=0
 set whichwrap+=<,>,[,]
 nmap <BS> <Left><Del>i
@@ -27,7 +28,8 @@ set hlsearch            " highlight matches
 set foldmethod=indent
 set foldenable!
 
-function WhatFunctionAreWeIn()
+
+function GetInsideFunction()
   let strList = ["while", "foreach", "ifelse", "if else", "for", "if", "else", "try", "catch", "case", "switch"]
   let foundcontrol = 1
   let position = ""
@@ -62,7 +64,7 @@ function WhatFunctionAreWeIn()
 endfunction
 
 
-set stl=%!WhatFunctionAreWeIn()
+set stl=%!GetInsideFunction()
 set laststatus=2
 
 imap "" ""<Left>
@@ -72,3 +74,25 @@ imap {} {}<Left>
 imap <> <><Left>
 
 colo PaperColor
+
+execute pathogen#infect()
+set runtimepath^=~/.vim/bundle/vim-multiple-cursors/autoload/multiple_cursors.vim
+let g:multi_cursor_use_default_mapping=1
+
+" Default mapping
+let g:multi_cursor_select_all_key      = 'gn'
+
+let w:mouseToggled = 0
+function MouseToggle() 
+    if(!w:mouseToggled)
+        set scrolloff=0
+        set mouse=a    
+    elseif(w:mouseToggled)
+        set scrolloff=99
+        set mouse=v
+    endif
+    let w:mouseToggled = !w:mouseToggled
+     
+endfunction
+
+nmap m :call MouseToggle()<CR>
