@@ -1,5 +1,5 @@
-#UNIX
-alias open='open -a "Sublime Text"'
+	#UNIX
+alias open='mvim'
 alias ll='ls -ltra'
 alias l='less'
 alias openaliases='open ~/.aliases'
@@ -10,20 +10,35 @@ alias start-android-server="$ANDROID_SDK/sdk/platform-tools/adb start-server"
 alias stop-android-server="$ANDROID_SDK/sdk/platform-tools/adb kill-server"
 alias log-android-server="$ANDROID_SDK/sdk/platform-tools/adb logcat"
 alias fbx-conv-mac="/Users/vitalipom/NetBeansProjects/fbx-conv/fbx-conv-mac"
-alias mysql="/usr/local/mysql/bin/mysql"
+
 
 #Google EffectedKeyboard
-alias git-commit="git add -A && git commit -m"
+alias git-commit="git add -A; and git commit -m"
 alias git-push="git push --all google"
 alias handsonthefloor="git clean -n"
-alias shootthemdead="git reset --hard && git clean -dfx"
+alias shootthemdead="git reset --hard; and git clean -dfx"
 alias git_undo_try="git reset"
 alias git_undo_hard='shootthemdead'
 alias git_goolge_isthere='git remote -v| grep google'
 alias git_goolge_add='git remote add google https://source.developers.google.com/p/effectedkeyboardsociaigit/r/EffectedKeyboardSocialGit'
 alias git_branches="git remote show google"
 
-alias ssh_google="ssh -i ~/.ssh/.gc_rsa vitali_pom@35.198.99.254" 
+alias ssh_google="ssh -i $SSH_GENIESTILLS $SERVER_GENIESTILLS" 
 alias phpmyadmin="ssh -N -L 8888:127.0.0.1:80 -i ~/.ssh/.gc_rsa vitali_pom@35.198.99.254" 
 
 alias sourceall="source ~/.bash_profile | source ~/.aliases"
+
+alias sassupdate="sass --update scss:css"
+
+alias oink="~/Desktop/chat\ app/perl.pl 2>> /dev/null"
+
+alias initsqlserver="brew services start mysql | mysql_secure_installation"
+alias startsqlserver="brew services start mysql"
+alias kill_mysqld="sudo killall mysqld"
+
+alias vd="vimdiff"
+
+alias gl="git log --graph --all --decorate --sparse"
+
+alias vim="mvim -v"
+alias o="open"
