@@ -1,4 +1,4 @@
-	#UNIX
+#UNIX
 alias open='mvim'
 alias ll='ls -ltra'
 alias l='less'
@@ -42,3 +42,10 @@ alias gl="git log --graph --all --decorate --sparse"
 
 alias vim="mvim -v"
 alias o="open"
+alias opn="open"
+
+alias rm='~/.mv-trash'
+
+alias gits='git status --porcelain '
+
+alias gis="gits"
