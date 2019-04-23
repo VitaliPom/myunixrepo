@@ -96,3 +96,31 @@ function MouseToggle()
 endfunction
 
 nmap m :call MouseToggle()<CR>
+
+"Turn on backup option
+set backup
+
+"Where to store backups
+set backupdir=~/.vim/backup//
+
+"Make backup before overwriting the current buffer
+set writebackup
+
+"Overwrite the original backup file
+set backupcopy=yes
+
+au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
+
+nmap c ci
+
+let w:numbers = 1 
+function Nu()
+    if(!w:numbers)
+        set relativen
+    elseif(w:numbers)
+        set nu
+    endif
+    let w:numbers = !
+endfunction
+
+command! NN call Nu()
