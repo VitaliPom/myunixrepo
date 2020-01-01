@@ -1,16 +1,15 @@
-set noeb vb t_vb=
 set timeoutlen=1000 ttimeoutlen=0
-set whichwrap+=<,>,[,]
-nmap <BS> <Left><Del>i
 set clipboard=unnamed
+set whichwrap+=<,>,[,]
 set bs=2
 set showmode
 set history=1000
 set number
-set mouse=v
+set mouse=a
 if version >= 703
-    set relativenumber
+    set relativenumber  
 endif
+" colo darkblue
 syntax on
 set expandtab
 set shiftwidth=4
@@ -29,43 +28,14 @@ set foldmethod=indent
 set foldenable!
 
 
-function GetInsideFunction()
-  let strList = ["while", "foreach", "ifelse", "if else", "for", "if", "else", "try", "catch", "case", "switch"]
-  let foundcontrol = 1
-  let position = ""
-  let pos=getpos(".")          " This saves the cursor position
-  let view=winsaveview()       " This saves the window view
-  while (foundcontrol)
-    let foundcontrol = 0
-    normal [{
-    call search('\S','bW')
-    let tempchar = getline(".")[col(".") - 1]
-    if (match(tempchar, ")") >=0 )
-      normal %
-      call search('\S','bW')
-    endif
-    let tempstring = getline(".")
-    for item in strList
-      if( match(tempstring,item) >= 0 )
-        let position = item . " - " . position
-        let foundcontrol = 1
-        break
-      endif
-    endfor
-    if(foundcontrol == 0)
-      call cursor(pos)
-      call winrestview(view)
-      return tempstring.position
-    endif
-  endwhile
-  call cursor(pos)
-  call winrestview(view)
-  return tempstring.position
-endfunction
-
-
-set stl=%!GetInsideFunction()
+fun! ShowFuncName()
+  echohl ModeMsg
+  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bWn'))
+  echohl None
+endfun
 set laststatus=2
+set stl=%!ShowFuncName()
+
 
 imap "" ""<Left>
 imap '' ''<Left>
@@ -73,29 +43,10 @@ imap [] []<Left>
 imap {} {}<Left>
 imap <> <><Left>
 
-colo PaperColor
+
+color dracula
 
 execute pathogen#infect()
-set runtimepath^=~/.vim/bundle/vim-multiple-cursors/autoload/multiple_cursors.vim
-let g:multi_cursor_use_default_mapping=1
-
-" Default mapping
-let g:multi_cursor_select_all_key      = 'gn'
-
-let w:mouseToggled = 0
-function MouseToggle() 
-    if(!w:mouseToggled)
-        set scrolloff=0
-        set mouse=a    
-    elseif(w:mouseToggled)
-        set scrolloff=99
-        set mouse=v
-    endif
-    let w:mouseToggled = !w:mouseToggled
-     
-endfunction
-
-nmap m :call MouseToggle()<CR>
 
 "Turn on backup option
 set backup
@@ -111,16 +62,62 @@ set backupcopy=yes
 
 au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
 
-nmap c ci
 
-let w:numbers = 1 
+let w:mouseToggled = 0
+function MouseToggle()
+    if(!w:mouseToggled)
+        set scrolloff=0
+"        set mouse=a    
+    elseif(w:mouseToggled)
+        set scrolloff=99
+"       set mouse=v
+    endif
+    let w:mouseToggled = !w:mouseToggled
+endfunction
+
+nmap m :call MouseToggle()<CR>
+
+function MouseToggleOn()
+    if(!w:mouseToggled)
+        set scrolloff=0
+        let w:mouseToggled = !w:mouseToggled
+    endif
+endfunction                                
+   
+map <ScrollWheelUp> :call MouseToggleOn()<CR>k
+map <ScrollWheelDown> :call MouseToggleOn()<CR>j
+
+
+let w:numbers = 1
 function Nu()
     if(!w:numbers)
-        set relativen
+        set relativenumber
     elseif(w:numbers)
         set nu
     endif
-    let w:numbers = !
+    let w:numbers = !w:numbers
 endfunction
 
 command! NN call Nu()
+
+nmap e :e
+
+filetype plugin on
+
+
+map <A-Left> <ESC>b
+map <A-Right> <ESC>w
+
+
+nmap <Bs> <Left><Del>i
+
+
+
+noremap! <S-Insert> <C-R>+
+nnoremap <S-Insert> "+gP
+snoremap <S-Insert> <Esc>gvc<C-R>+
+xnoremap <S-Insert> c<C-R>+<Esc>
+
+
+imap <A-BS> <c-w>
+nmap <A-BS> i<c-w>
