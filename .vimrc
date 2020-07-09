@@ -159,3 +159,13 @@ nmap <Esc>b b
 imap <Esc>b [1;5D
 imap <Esc>f [1;5C
 
+""""According to iTerm2 Profile Keys Natural text editing; This is by pressing Ctl-V followed by key (CTL arrow or ALT arrow)
+nmap [1;5A {
+nmap [1;5B }
+imap [1;5A <Esc>{i
+imap [1;5B <Esc>}i
+imap [1;9A <Esc>{i
+imap [1;9B <Esc>}i
+nmap [1;9A {
+nmap [1;9B }
+""""
